@@ -1,0 +1,678 @@
+<html lang="en">
+ <head> 
+
+{Change}
+  <link rel="stylesheet" href="https://kunyo.co/dist/themes/default/css/app.min.css"> 
+
+{Change}
+  <link rel="stylesheet" href="https://kunyo.co/dist/themes/default/css/main.min.css?version=1676592289"> 
+  <style>[wire\:loading] {display: none;}[wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}</style> 
+  <style>
+        #toast-container.nopacity > div {
+            opacity: 1;
+        }
+    </style> 
+  <script>
+        function showPassword(el) {
+            var inputEl = document.getElementById(el);
+            if (inputEl.type === "password") {
+                inputEl.type = "text";
+                document.getElementById('password-toggle-indicator-'+el).classList.remove("icon-eye-open");
+                document.getElementById('password-toggle-indicator-'+el).classList.remove("la-eye");
+                document.getElementById('password-toggle-indicator-'+el).classList.add("icon-eye-close");
+                document.getElementById('password-toggle-indicator-'+el).classList.add("la-eye-slash");
+            } else {
+                inputEl.type = "password";
+                document.getElementById('password-toggle-indicator-'+el).classList.add("icon-eye-open");
+                document.getElementById('password-toggle-indicator-'+el).classList.add("la-eye");
+                document.getElementById('password-toggle-indicator-'+el).classList.remove("icon-eye-close");
+                document.getElementById('password-toggle-indicator-'+el).classList.remove("la-eye-slash");
+            }
+        }
+        document.addEventListener('livewire:load', function (event) {
+
+            window.livewire.on('redirect', function (param) {
+                if (param === '/') {
+                    window.location.href = '/';
+                }
+
+                Turbolinks.visit(param)
+            })
+
+            window.livewire.on('alert', function (param) {
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": true,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                if (param) {
+                    toastr[param[0].toLowerCase()]('', param[1]);
+                    $('#toast-container').addClass('nopacity');
+                }
+            });
+
+            window.livewire.on('redirect-with-alert', function (param) {
+                if (param === '/') {
+                    window.location.href = '/';
+                }
+
+                Turbolinks.visit(param.redirect);
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": true,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                if (param.alert) {
+                    toastr[param.alert[0].toLowerCase()]('', param.alert[1]);
+                    $('#toast-container').addClass('nopacity');
+                }
+            })
+
+        })
+
+    </script> 
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1013984135957835');
+    fbq('track', 'PageView');
+</script> 
+  <script>
+            var fbRoot;
+                    </script> 
+  <link rel="stylesheet" href="https://kunyo.co/dist/themes/default/css/main.min.css?version=1676592303">
+  <link rel="stylesheet" href="https://kunyo.co/dist/themes/default/css/main.min.css?version=1676592308">
+  <script>
+        var slickSlider = {
+            initSlideGallery: function () {
+                if ($('.slide-gallery').length) {
+
+                    $(".slide-gallery").not('.slick-initialized').slick({
+                        dots: true,
+                        infinite: true,
+                        speed: 300,
+                        slidesToShow: 1,
+                        prevArrow: '<button type="button" class="slick-prev"><i class="las la-angle-left"></i></button>',
+                        nextArrow: '<button type="button" class="slick-next"><i class="las la-angle-right"></i></button>',
+                        adaptiveHeight: true,
+                        centerMode: true,
+                        variableWidth: true,
+                        autoplay: true,
+                        autoplaySpeed: 5000,
+                        responsive: [
+                            {
+                                breakpoint: 1024,
+                                settings: {
+                                    centerMode: false,
+                                    variableWidth: false,
+                                }
+                            },
+                            {
+                                breakpoint: 767,
+                                settings: {
+                                    centerMode: false,
+                                    variableWidth: false,
+                                }
+                            },
+                            {
+                                breakpoint: 480,
+                                settings: {
+                                    centerMode: false,
+                                    variableWidth: false,
+                                }
+                            }
+                        ]
+                    });
+                }
+            },
+            initSlideTestimonial: function () {
+                if ($('.testimonial-slider').length) {
+                    $('.testimonial-slider').not('.slick-initialized').slick({
+                        dots: true,
+                        infinite: true,
+                        speed: 300,
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                        prevArrow:'<button type="button" class="slick-prev"><i class="las la-angle-left"></i></button>',
+                        nextArrow:'<button type="button" class="slick-next"><i class="las la-angle-right"></i></button>',
+                        adaptiveHeight: true,
+                        autoplay: true,
+                        autoplaySpeed: 5000,
+                        responsive: [
+                            {
+                                breakpoint: 1024,
+                                settings: {
+                                    slidesToShow: 2,
+                                    slidesToScroll: 2,
+                                    infinite: true,
+                                    dots: true
+                                }
+                            },
+                            {
+                                breakpoint: 767,
+                                settings: {
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1
+                                }
+                            },
+                            {
+                                breakpoint: 480,
+                                settings: {
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1
+                                }
+                            }
+
+                        ]
+                    });
+                }
+            },
+
+            init: function () {
+                this.initSlideGallery();
+                this.initSlideTestimonial();
+            }
+        };
+        function initIndexScripts(){
+            slickSlider.init();
+        }
+        $(document).on("turbolinks:load", initIndexScripts);
+    </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="csrf_token" content="TOKEN" id="csrf_token" data-turbolinks-permanent="">
+  <meta name="csrf-token" content="lkXblt0j7nflLkoPHQL9gJv8SJDpsanyW8kFIG6i" id="csrf-token" data-turbolinks-permanent="">
+  <meta name="ahrefs-site-verification" content="a0163bfd6cc58187462edf2e7c6a4723c634da512d3b1878ded9641126f78acb">
+
+{Change}
+  <link rel="shortcut icon" href="https://kunyo.co/storage/images/setting/c803bdcd484bac3f667fb4aa3a8fc585_Kunyo logo ICO.ico">
+
+{Change}
+  <link rel="canonical" href="https://kunyo.co/category/freefire-diamond-uid">
+  <meta name="description" content="Buy GARENA FREE FIRE DIAMOND NEPAL at Cheapest Price in Nepal and improve your gaming experience. Various Payment Gateway: IME Pay, Khalti, Prabhu Pay, eSewa, FonePay, NIC ASIA, etc.">
+  <title>BUY GARENA FREE FIRE DIAMOND NEPAL TOPUP, FREE FIRE DIAMONDS, Cheapest in Nepal</title>
+  <noscript>
+   &lt;img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1013984135957835&amp;amp;ev=PageView&amp;amp;noscript=1"&gt;
+  </noscript>
+ </head> 
+ <body style="padding-top: 0px;"> 
+  <header id="header" class="box-shadow-sm"> 
+   <div class="navbar-sticky bg-light"> 
+    <div class="navbar navbar-expand-lg navbar-light" style="background: rgb(208, 40, 41);"> 
+     <div class="container"> 
+
+{Change}
+      <a class="navbar-brand d-none d-sm-block mr-3 flex-shrink-0" href="https://kunyo.co" style="min-width: 7rem;"> <img width="142" src="/cdn-cgi/mirage/1f3fc225623472217bb302d7a39b696fe34c839a631f8ea4742c0839645e031a/1280/https://kunyo.co/optimized/images/setting/a0fc30886386fcc007566a36313e78df_kunyologo(1).png" alt="Kunyo Giftcards And P.C shop PVT.LTD"> </a> 
+
+{Change}
+      <a class="navbar-brand d-sm-none mr-2" href="https://kunyo.co" style="min-width: 4.625rem;"> <img width="74" src="/cdn-cgi/mirage/1f3fc225623472217bb302d7a39b696fe34c839a631f8ea4742c0839645e031a/1280/https://kunyo.co/optimized/images/setting/a0fc30886386fcc007566a36313e78df_kunyologo(1).png" alt="Kunyo Giftcards And P.C shop PVT.LTD"> </a> 
+      <form class="input-group-overlay d-none d-lg-flex mx-4" action="https://kunyo.co/search"> 
+       <input name="keyword" class="form-control appended-form-control" type="text" placeholder="Search for products ..." value=""> 
+       <input type="submit" hidden> 
+       <div class="input-group-append-overlay"> 
+        <span class="input-group-text"><i class="la la-search"></i></span> 
+       </div> 
+      </form> 
+      <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center"> 
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button> 
+       <a class="navbar-tool navbar-stuck-toggler" href="#"><span class="navbar-tool-tooltip">Expand menu</span> 
+        <div class="navbar-tool-icon-box">
+         <i class="navbar-tool-icon las la-bars"></i>
+        </div> </a> 
+
+{Change}
+       <a wire:id="oQmxFTM3nBNoYkX4ZM3T" class="navbar-tool ml-1 ml-lg-0 mr-n1 mr-lg-2" href="https://kunyo.co/checkout"> 
+        <div class="navbar-tool-icon-box"> 
+         <i class="navbar-tool-icon la la-shopping-cart" style="font-size:34px"></i> 
+         <span class="badge badge-info shopping-cart-counter" style="padding: 1px;margin-left: -16px;">0</span> 
+        </div> </a> 
+
+{Change}
+       <a wire:id="JzjszIIqrMsi3mZHqdtp" class="navbar-tool ml-1 ml-lg-0 mr-n1 mr-lg-2" href="https://kunyo.co/wallet"> 
+        <div class="navbar-tool-icon-box">
+         <i class="navbar-tool-icon las la-wallet"></i>
+        </div> </a> 
+
+{Change}
+       <a class="navbar-tool ml-1 ml-lg-0 mr-n1 mr-lg-2" href="https://kunyo.co/login"> 
+        <div class="navbar-tool-icon-box">
+         <i class="navbar-tool-icon la la-user"></i>
+        </div> 
+        <div class="navbar-tool-text ml-n3">
+         <small>Hello, Sign in </small>My Account
+        </div> </a> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="navbar navbar-expand-lg navbar-light navbar-stuck-menu pt-0 pb-2"> 
+     <div class="container"> 
+      <div class="collapse navbar-collapse" id="navbarCollapse"> 
+       <div wire:id="UkJ6X6AMIWqr9U6QwEgc" class="input-group-overlay d-lg-none my-3"> 
+        <div class="input-group-prepend-overlay"> 
+         <span class="input-group-text"><i class="la la-search"></i></span>
+        </div> 
+        <input wire:model="form.keyword" name="keyword" class="form-control prepended-form-control" wire:change="search" type="text" placeholder="Search for products"> 
+       </div> 
+       <ul class="navbar-nav"> 
+
+{Change}
+        <li class="nav-item "> <a href="https://kunyo.co/collection/freefire-top-up" class="nav-link" data-target="1">FreeFire Top UP</a> </li> 
+
+{Change}
+        <li class="nav-item "> <a href="https://kunyo.co/collection/tiktok-coins" class="nav-link" data-target="1">Tiktok Coins</a> </li> 
+
+{Change}
+        <li class="nav-item "> <a href="https://kunyo.co/collection/gift-card" class="nav-link" data-target="1">Gift Card</a> </li> 
+
+{Change}
+        <li class="nav-item "> <a href="https://kunyo.co/collection/mobile-games-top-up" class="nav-link" data-target="1">Mobile Games Top Up</a> </li> 
+
+{Change}
+        <li class="nav-item "> <a href="https://kunyo.co/collection/subscription" class="nav-link" data-target="1">Subscription</a> </li> 
+
+{Change}
+        <li class="nav-item "> <a href="https://kunyo.co/category/promos" class="nav-link" data-target="1">Promo</a> </li> 
+       </ul> 
+
+
+       
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+
+  </header> 
+  <main id="main"> 
+   <div wire:id="WENLDUFMLAg7d1PGNI4T"> 
+    <div class="page-title-overlap bg-dark pt-4"> 
+     <div class="container d-lg-flex justify-content-between py-2 py-lg-3"> 
+      <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2"> 
+       <nav aria-label="breadcrumb"> 
+        <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start"> 
+         <li class="breadcrumb-item">
+
+{Change}
+ <a class="text-nowrap" href="https://kunyo.co"> <i class="la la-home"></i>Home </a> </li> 
+         <li class="breadcrumb-item text-nowrap">
+
+{Change}
+ <a href="https://kunyo.co/category/free-fire">Free Fire</a> </li> 
+
+
+         <li class="breadcrumb-item text-nowrap">
+{Change}
+ <a href="https://kunyo.co/category/freefire-diamond-uid">Free Fire Diamond Top UP</a> </li> 
+
+        </ol> 
+       </nav> 
+      </div> 
+      
+     </div> 
+    </div> 
+    
+{Delet}
+
+      <input wire:model="categorySlug" type="hidden" name="categorySlug" value="freefire-diamond-uid"> 
+      <div class="order-lg-1 pr-lg-4 cart-title text-center text-lg-left"> 
+       <div wire:loading.remove="" wire:target="search"> 
+        <h1 class="h3 text-light mb-0">5 Results</h1> 
+       </div> 
+       <div wire:loading="" wire:target="search">
+         Processing Payment... 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="container"> 
+     <div class="bg-light box-shadow-lg rounded-lg p-4 mt-n5 mb-4"> 
+      <div class="d-flex justify-content-between align-items-center"> 
+       <div class="dropdown mr-2"> 
+        <a class="btn btn-outline-secondary dropdown-toggle collapsed" href="#shop-filters" data-toggle="collapse" aria-expanded="false"><i class="las la-filter mr-2"></i>Filters</a> 
+       </div> Showing Total 5 Top Up 
+      </div> 
+      <div class="collapse" id="shop-filters" style=""> 
+       <table class="filter"> 
+        <tbody class="filter-drop"> 
+         <tr class="filter-row"> 
+          <td><a href="javascript:void(0);" wire:click="searchWithKeyword('all')">all</a></td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('a')">a</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('b')">b</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('c')">c</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('d')">d</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('e')">e</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('f')">f</a> </td> 
+         </tr> 
+         <tr></tr> 
+         <tr class="filter-row"> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('g')">g</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('h')">h</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('i')">i</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('j')">j</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('k')">k</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('l')">l</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('m')">m</a> </td> 
+         </tr> 
+         <tr></tr> 
+         <tr class="filter-row"> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('n')">n</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('o')">o</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('p')">p</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('q')">q</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('r')">r</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('s')">s</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('t')">t</a> </td> 
+         </tr> 
+         <tr></tr> 
+         <tr class="filter-row"> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('u')">u</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('v')">v</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('w')">w</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('x')">x</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('y')">y</a> </td> 
+          <td> <a href="javascript:void(0);" wire:click="searchWithKeyword('z')">z</a> </td> 
+          <td><a href="javascript:void(0);" wire:click="searchWithKeyword('#')">#</a></td> 
+         </tr> 
+         <tr></tr> 
+
+       
+      
+
+        </body> 
+       </table> 
+      </div> 
+     </div> 
+
+
+{Conglomerates}
+
+     <!-- /filter --> 
+     <section class="pt-2 pb-5"> 
+      <div class="row"> 
+       <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4"> 
+        <div class="card product-card"> 
+
+{Change}
+         <div class="product-card-img"> 
+          <a class="card-img-top d-block overflow-hidden" href="https://kunyo.co/top-up/free-fire-special-airdrop-top-up-in-cheap-price-in-nepal"> 
+
+
+<img src="C:\Users\i_love_rohit\Desktop\web dimond\picture.jpg" 
+
+title="Free Fire Special Airdrops (1$-2$ airdrops only)" alt="Free Fire Special Airdrops (1$-2$ airdrops only)"></a> 
+         </div> 
+         <div class="card-body py-2">
+
+{Change}
+          <h3 class="product-title font-size-sm">
+ <a href="https://kunyo.co/top-up/free-fire-special-airdrop-top-up-in-cheap-price-in-nepal"> Free Fire Special Airdrops (1$-2$ airdrops only) </a> </h3> 
+          <div class="product-price">
+           <span class="text-accent">Rs. 215 - Rs. 215</span>
+          </div> 
+         </div> 
+         <div class="card-body card-body-hidden">
+
+{Change} 
+          <a class="btn btn-primary btn-block mb-2" wire:loading.attr="disabled" href="https://kunyo.co/top-up/free-fire-special-airdrop-top-up-in-cheap-price-in-nepal"><i class="las la-eye"></i> View</a> 
+
+         </div> 
+        </div> 
+        <hr class="d-sm-none"> 
+       </div> 
+       <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4"> 
+        <div class="card product-card"> 
+         <div class="product-card-img"> 
+
+{Change}
+          <a class="card-img-top d-block overflow-hidden" href="https://kunyo.co/top-up/less-is-more"> 
+
+
+<img src="https://kunyo.co/optimized/images/top-up/3dac08317b2acadfd894b6b8efe5088b_111.png" 
+
+title="Less is more" alt="Less is more"></a> 
+
+         </div> 
+         <div class="card-body py-2"> 
+          <h3 class="product-title font-size-sm"> <a href="https://kunyo.co/top-up/less-is-more"> Less is more </a> </h3> 
+          <div class="product-price">
+
+           <span class="text-accent">Rs. 300 - Rs. 550</span>
+
+          </div> 
+         </div> 
+         <div class="card-body card-body-hidden"> 
+
+{Change}
+          <a class="btn btn-primary btn-block mb-2" wire:loading.attr="disabled" href="https://kunyo.co/top-up/less-is-more"><i class="las la-eye"></i> View</a> 
+         </div> 
+        </div> 
+        <hr class="d-sm-none"> 
+       </div>
+       <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4"> 
+        <div class="card product-card"> 
+         <div class="product-card-img"> 
+
+{Change}
+          <a class="card-img-top d-block overflow-hidden" href="https://kunyo.co/top-up/special-offer">
+
+
+ <img src="C:\Users\i_love_rohit\Desktop\web dimond\picture.jpg" 
+
+ title="Freefire Topup Via login- Special Offer" alt="Freefire Topup Via login- Special Offer"></a> 
+         </div> 
+
+         <div class="card-body py-2"> 
+          <a class="product-meta d-block font-size-xs pb-1 text-center" href="javascript:void(0);"> Freefire </a> 
+
+{Change}
+          <h3 class="product-title font-size-sm"> <a href="https://kunyo.co/top-up/special-offer"> Freefire Topup Via login- Special Offer </a> </h3> 
+
+          <div class="product-price">
+           <span class="text-accent">Rs. 950 - Rs. 1,900</span>
+          </div> 
+         </div> 
+
+{Change}
+         <div class="card-body card-body-hidden"> 
+          <a class="btn btn-primary btn-block mb-2" wire:loading.attr="disabled" href="https://kunyo.co/top-up/special-offer"><i class="las la-eye"></i> View</a> 
+
+         </div> 
+        </div> 
+        <hr class="d-sm-none"> 
+       </div> 
+       <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4"> 
+        <div class="card product-card"> 
+         <div class="product-card-img"> 
+
+{Change}
+          <a class="card-img-top d-block overflow-hidden" href="https://kunyo.co/top-up/free-fire-diamond-top-up-login">
+
+
+ <img src="C:\Users\i_love_rohit\Desktop\web dimond\picture.jpg" 
+
+ title="Free Fire Diamond TopUp Via Login(No indian Region and Indonesian Region)" alt="Free Fire Diamond TopUp Via Login(No indian Region and Indonesian Region)"></a> 
+         </div> 
+         <div class="card-body py-2"> 
+
+{Change}
+          <h3 class="product-title font-size-sm"> <a href="https://kunyo.co/top-up/free-fire-diamond-top-up-login"> Free Fire Diamond TopUp Via Login(No Nepal Region and Indonesian Region) </a> </h3> 
+          <div class="product-price">
+           <span class="text-accent">Rs. 130 - Rs. 5,500</span>
+          </div> 
+         </div> 
+
+{Change}
+         <div class="card-body card-body-hidden"> 
+          <a class="btn btn-primary btn-block mb-2" wire:loading.attr="disabled" href="https://kunyo.co/top-up/free-fire-diamond-top-up-login"><i class="las la-eye"></i> View</a> 
+
+         </div> 
+        </div> 
+        <hr class="d-sm-none"> 
+       </div> 
+
+       <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4"> 
+        <div class="card product-card"> 
+         <div class="product-card-img"> 
+
+{Change }
+          <a class="card-img-top d-block overflow-hidden" href="https://kunyo.co/top-up/free-fire-diamond-top-up-direct"> 
+
+
+<img src="C:\Users\i_love_rohit\Desktop\web dimond\picture.jpg"
+
+ title="Free Fire Diamond Top Up (Direct) Via UID(No Indian &amp; Indonesian Region)" alt="Free Fire Diamond Top Up (No Nepal &amp; Indonesian Region)"></a> 
+
+         </div> 
+         <div class="card-body py-2"> 
+          <a class="product-meta d-block font-size-xs pb-1 text-center" href="javascript:void(0);"> FreeFire </a> 
+
+{Change}
+          <h3 class="product-title font-size-sm"> <a href="https://kunyo.co/top-up/free-fire-diamond-top-up-direct"> Free Fire Diamond Top Up (Direct) Via UID(No Nepal &amp; Indonesian Region) </a> </h3> 
+          <div class="product-price">
+
+           <span class="text-accent">Rs. 130 - Rs. 2,500</span>
+          </div> 
+         </div> 
+         <div class="card-body card-body-hidden">
+
+
+{Change} 
+          <a class="btn btn-primary btn-block mb-2" wire:loading.attr="disabled" href="C:\Users\i_love_rohit\Desktop\web dimond\free-fire-diamond-top-up-direct-1.html"><i class="las la-eye"></i> View</a> 
+
+         </div> 
+        </div> 
+        <hr class="d-sm-none"> 
+       </div> 
+      </div> 
+     </section> 
+    </div> 
+   </div> 
+  </main> 
+
+  <footer class="bg-dark pt-5 footer"> 
+   <div class="bg-darker"> 
+    <div class="container"> 
+     <div class="row"> 
+      <div class="col-md-3"> 
+       <a data-turbolinks="false" class="d-inline-block align-middle mt-n1 mr-3" 
+
+href="https://kunyo.co"> 
+
+<img class="d-block" width="117" src="C:\Users\i_love_rohit\Desktop\web dimond\picture.jpg" 
+alt="free fire topup list " loading="lazy"></a> 
+
+
+       <div class="company-info pt-4"> 
+
+{Location}
+        <p><i class="las la-map-marker-alt pr-2">
+
+</i> Lahan, Siraha, Nepal</p> 
+
+{Number}
+        <p><i class="las la-phone pr-2"></i> <a href="tel:">9814773000</a></p> 
+
+{Gmail}
+  <p><i class="lar la-envelope pr-2"></i> <a
+ href="mailto: rohitmetharbj@gmail.com">rohitmetharbj@gmail.com</a></p> 
+
+       </div> 
+      </div> 
+      <div class="col-md-3 col-md-3 pl-lg-4"> 
+      </div> 
+      <div class="col-md-3"> 
+       <h5 class="text-light mb-4 text-capitalize ls-2">Pay Via</h5> 
+       <div class="payment-option"> 
+        <div class="row"> 
+
+         <div class="col-sm-4 mb-4 d-flex align-items-center" style="padding-left: 0;padding-right: 0;"> 
+
+{imepay}
+          <img src="/cdn-cgi/mirage/1f3fc225623472217bb302d7a39b696fe34c839a631f8ea4742c0839645e031a/1280/https://kunyo.co/assets/frontend/images/imepay.png" alt="IMEPAY" style="padding: 5px;" loading="lazy"> 
+         </div> 
+
+         <div class="col-sm-4 mb-4 d-flex align-items-center" style="padding-left: 0;padding-right: 0;"> 
+   
+{Khalti}      
+ <a target="_blank" href="https://khalti.com/" rel="noopener"> <img src="/cdn-cgi/mirage/1f3fc225623472217bb302d7a39b696fe34c839a631f8ea4742c0839645e031a/1280/https://kunyo.co/assets/frontend/images/payment-option/new khalti.png" alt="Khalti" style="padding: 5px;" loading="lazy"> </a> 
+         </div> 
+       
+  <div class="col-sm-4 mb-4 d-flex align-items-center" style="padding-left: 0;padding-right: 0;"> 
+
+{img Prabhupay}
+   <img src="/cdn-cgi/mirage/1f3fc225623472217bb302d7a39b696fe34c839a631f8ea4742c0839645e031a/1280/https://kunyo.co/optimized/images/setting/7ff09e074e2195eefaf6ee49597dd2e1_prabhupay.png" alt="Prabhupay" style="padding: 5px;" loading="lazy"> 
+
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="col-md-3  mb-4">     
+ <h5 class="text-light mb-4 text-capitalize ls-2">Connect with Nepal</h5> 
+<div class="mb-3">
+
+
+ <a class="social-btn sb-light sb-facebook ml-2 mb-2" target="_blank" 
+ href="https://www.facebook.com/rohitsingh.np"><i class="la la-facebook"></i>  </a> 
+
+<a class="social-btn sb-light sb-instagram ml-2 mb-2" target="_blank"
+ href="https://www.instagram.com/rohit_vs_a_c_8/">
+
+ <i class="la la-instagram"></i> </a> 
+       </div> 
+      </div> 
+     </div> 
+     <hr class="hr-light"> 
+     <div class="bottom-footer"> 
+      <div class="row"> 
+
+  <div class="col-md-6 pb-3 font-size-sm text-light text-left opacity-50 copyright-text">     
+        © All rights reserved. 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+
+
+  <a href="https://m.me/rohitsingh.np" 
+
+  class="widget_chat" target="_blank"> 
+   <svg xmlns="http://www.w3.org/2000/svg" width="2500" height="2500" viewbox="0 0 512 512"> 
+     <path fill="#0084ff"
+      d="M512 0H0v512h512z"  ></path> 
+<path d="M257 93c-88.918 0-161 67.157-161
+150 0 47.205 23.412 89.311 60
+116.807V417l54.819-30.273C225.449 390.801 240.948 393 257 393c88.918 0 161-67.157 161-150S345.918 93 257 93zm16 202l-41-44-80 44 88-94 42 44 79-44-88 94z" fill="#fff"></path> 
+    
+ </body>
+</html>
